@@ -30,8 +30,19 @@ function insertRowIntoTable(data) {
 function loadHTMLTable(data) {
     const table = document.querySelector('table tbody');
     console.log(data);
-    let tableHtml = "";
     if (data.length === 0) {
         table.innerHTML = "<tr><td class='no-data' colspan='5'>No Data there</td></tr>";
+        return;
     };
+    let tableHtml = "";
+    data.forEach(function ({ id, name, date_added }) {
+        tableHtml += "<tr>";
+        tableHtml += `<td>${id}</td>`;
+        tableHtml += `<td>${name}</td>`;
+        tableHtml += `<td>${date_added}</td>`;
+        tableHtml += `<td class="delete-row-btn"id="${id}"><button>Delete</button></td>`;
+        tableHtml += `<td class="edit-row-btn"id="${id}"><button>Edit</button></td>`;
+        tableHtml += "</tr>"
+    });
+    table.innerHTML = tableHtml;
 };

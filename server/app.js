@@ -30,7 +30,7 @@ app.get('/getAll', (req, res) => {
     const result = db.getAllData();
 
     result.then(data => res.json({ data: data }))
-        .catch(err => console.log(err));
+          .catch(err => console.log(err));
     // res.json({
     //     success: true
     // });
