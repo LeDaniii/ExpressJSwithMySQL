@@ -23,7 +23,13 @@ addBtn.onclick = function () {
 };
 
 function insertRowIntoTable(data) {
+    const table = document.querySelector('table tbody');
+    const isTableData = table.querySelector('.no-data');
 
+    let tableHtml = "<tr>";
+    data.forEach(function ({ id, name, dateAdded }) {
+        
+    })
 }
 
 
@@ -39,7 +45,7 @@ function loadHTMLTable(data) {
         tableHtml += "<tr>";
         tableHtml += `<td>${id}</td>`;
         tableHtml += `<td>${name}</td>`;
-        tableHtml += `<td>${date_added}</td>`;
+        tableHtml += `<td>${new Date(date_added).toLocaleString()}</td>`;
         tableHtml += `<td class="delete-row-btn"id="${id}"><button>Delete</button></td>`;
         tableHtml += `<td class="edit-row-btn"id="${id}"><button>Edit</button></td>`;
         tableHtml += "</tr>"
