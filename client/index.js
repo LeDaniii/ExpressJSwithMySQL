@@ -27,9 +27,26 @@ function insertRowIntoTable(data) {
     const isTableData = table.querySelector('.no-data');
 
     let tableHtml = "<tr>";
-    data.forEach(function ({ id, name, dateAdded }) {
-        
-    })
+
+    for (var key in data) {
+        if (data.hasOwnProperty(key)) {
+            if (key === 'dateAdded') {
+                data[key] = new Date(data[key].toLocaleString());
+            }
+            tableHtml += `<td>${data[key]}</td>`
+        }
+    }
+    tableHtml += `<td class="delete-row-btn"id="${data.id}"><button>Delete</button></td>`;
+    tableHtml += `<td class="edit-row-btn"id="${data.id}"><button>Edit</button></td>`;
+
+    tableHtml += "</tr>";
+
+    if (isTableData) {
+        table.innerHTML = tableHtml;
+    } else {
+        const newRow = table.insertRow();
+        newRow.innerHTML = tableHtml;
+    }
 }
 
 
